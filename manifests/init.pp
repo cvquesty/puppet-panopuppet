@@ -4,11 +4,10 @@ class panopuppet (
   $static_root = '/var/www/panopuppet/staticfiles',
   $secret_key = 'password123',
   $allowed_hosts = ['*'],
+  $puppetdb_host = $::fqdn
 ){
 
-  if $puppetdb_url == undef {
-    $puppetdb_url = 'http://localhost:8080'
-  }
+  $puppetdb_url = "http://${puppetdb_host}:8080"
 
   $cfg_file = "${wsgi_dir}/config.yaml"
 
